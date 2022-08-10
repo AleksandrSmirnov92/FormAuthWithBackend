@@ -1,0 +1,78 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  background-color: rgb(8, 48, 32);
+  width: 400px;
+}
+.button_Sign_in {
+  padding: 10px 15px 10px 15px;
+  margin: 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: rgb(90, 146, 146);
+  color: white;
+}
+
+.button_Sign_up {
+  padding: 10px 15px 10px 15px;
+  margin: 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: rgb(90, 146, 146);
+  color: white;
+}
+.button_Sign_in:hover {
+  background-color: rgb(131, 131, 184);
+}
+.button_Sign_up:hover {
+  background-color: rgb(131, 131, 184);
+}
+.main {
+  margin: 0 auto;
+  width: 400px;
+  background-color: rgb(229, 229, 235);
+}
+/*FORM SIGN UP*/
+.wrapper_form_Sign_up {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  border-radius: 6px;
+  padding: 10px 15px 10px 15px;
+}
+input:hover {
+  background-color: whitesmoke;
+}
+input:focus {
+  background-color: whitesmoke;
+  outline: 0px;
+}
+.button_submit {
+  border-radius: 6px;
+  padding: 10px 15px 10px 15px;
+  margin: 15px;
+  border: none;
+  background-color: rgb(90, 146, 146);
+  color: white;
+  font-size: 1.17em;
+}
+.button_submit:hover {
+  background-color: rgb(184, 131, 162);
+}
+h1 {
+  color: black;
+}
+/*FORM SIGN IN*/
+.wrapper_form_Sign_in {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.display_flex {
+  display: flex;
+}
