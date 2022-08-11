@@ -2,8 +2,8 @@ const button_Sign_in = document.querySelector(".button_Sign_in")!;
 const button_Sign_up = document.querySelector(".button_Sign_up")!;
 const FormSignIn = document.querySelector(".wrapper_form_Sign_in")!;
 const FormSignUp = document.querySelector(".wrapper_form_Sign_up")!;
-const Button_submit_SignUp = document.querySelector("#Form1")!;
-const Button_submit_SignIn = document.querySelector("#Form2")!;
+const Form1_SignUp = document.querySelector("#Form1")!;
+
 let state = {
   classButton: "",
 };
@@ -18,15 +18,28 @@ button_Sign_in.addEventListener("click", () => {
   changeSignUpAndSignIn();
 });
 
-Button_submit_SignUp.addEventListener("submit", (e) => {
+Form1_SignUp.addEventListener("submit", (e) => {
   e.preventDefault();
-  let form = document.querySelector("form") as HTMLElement;
-
+  const Login = document.querySelector("[name = 'Login']")! as HTMLInputElement;
+  const Password = document.querySelector(
+    "[name = 'Password']"
+  )! as HTMLInputElement;
+  const Repeat_password = document.querySelector(
+    "[name = 'Repeat_password']"
+  )! as HTMLInputElement;
+  const Email = document.querySelector("[name = 'Email']")! as HTMLInputElement;
+  let values = {
+    Login: Login.value,
+    Password: Password.value,
+    Repeat_password: Repeat_password.value,
+    Email: Email.value,
+  };
   console.log("форма отправилась1");
-});
-Button_submit_SignIn.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("форма отправилась2");
+  console.log(values);
+  Login.value = "";
+  Password.value = "";
+  Repeat_password.value = "";
+  Email.value = "";
 });
 
 function changeSignUpAndSignIn() {
