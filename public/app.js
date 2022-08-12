@@ -14,6 +14,13 @@ console.log(path.resolve(`${__dirname}/index.html`));
 app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "", "index.html"));
 });
+app.post("/forms", (req, res) => {
+    res.status(200).json({
+        status: "succes",
+        body: req.body,
+    });
+    console.log(req.body);
+});
 app.listen(port, () => {
     console.log(`server listening on port:${port}`);
 });

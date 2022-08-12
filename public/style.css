@@ -76,3 +76,12 @@ h1 {
 .display_flex {
   display: flex;
 }
+#error_Login {
+  color: red;
+}
+#error_Password {
+  color: red;
+}
+#error_Repeat_password {
+  color: red;
+}
