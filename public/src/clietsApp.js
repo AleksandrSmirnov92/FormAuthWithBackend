@@ -41,10 +41,18 @@ Form1_SignUp.addEventListener("submit", (e) => {
         (Login.value = ""), (Password.value = ""), (Repeat_password.value = "");
     }
     Email.value = "";
-    fetch("http:127.0.0.1:3000/forms")
+    console.log(JSON.stringify(state.values));
+    createUsers();
+});
+function createUsers() {
+    fetch("http://localhost:3000/forms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ values: state.values }),
+    })
         .then((response) => response.json())
         .then((response) => console.log(response));
-});
+}
 function changeSignUpAndSignIn() {
     if (state.classButton === "Sign_up") {
         FormSignUp.classList.remove("display_flex");

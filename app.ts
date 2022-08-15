@@ -9,12 +9,12 @@ console.log(path.resolve(`${__dirname}/index.html`));
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "", "index.html"));
 });
-app.post("/forms", (req, res) => {
+app.post("/forms", (req: any, res) => {
+  console.log(req.body);
   res.status(200).json({
     status: "succes",
-    body: req.body,
+    body: { УСПЕШНО: req.body },
   });
-  console.log(req.body);
 });
 app.listen(port, () => {
   console.log(`server listening on port:${port}`);
