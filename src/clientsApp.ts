@@ -38,26 +38,34 @@ Form1_SignUp.addEventListener("submit", (e) => {
   )! as HTMLInputElement;
   const Email = document.querySelector("[name = 'Email']")! as HTMLInputElement;
   formValidation(Login, Password, Repeat_password);
-  console.log("форма отправилась1");
   console.log(state.values);
   let include: any = state.valuesTrue.includes(false);
 
   if (include === false) {
     (Login.value = ""), (Password.value = ""), (Repeat_password.value = "");
+    createUsers();
+    console.log("форма отправилась1");
+  } else {
+    console.log("Заполните форму до конца");
   }
   Email.value = "";
   console.log(JSON.stringify(state.values));
-  createUsers();
+  // createUsers();
 });
 
 function createUsers() {
   fetch("http://localhost:3000/forms", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ values: state.values }),
+    body: JSON.stringify(state.values),
   })
     .then((response) => response.json())
-    .then((response) => console.log(response));
+    .then((response) => {
+      console.log(response);
+      setTimeout(() => {
+        window.location.href = "http://localhost:3000/forms";
+      }, 2000);
+    });
 }
 function changeSignUpAndSignIn() {
   if (state.classButton === "Sign_up") {
