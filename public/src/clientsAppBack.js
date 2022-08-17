@@ -1,7 +1,5 @@
 "use strict";
 const back = document.querySelector(".back");
-let value = "; " + document.cookie;
-console.log(value);
 back.addEventListener("click", () => {
     setTimeout(() => {
         window.location.href = "http://localhost:3000/";
