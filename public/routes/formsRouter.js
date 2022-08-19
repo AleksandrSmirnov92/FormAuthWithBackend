@@ -31,8 +31,18 @@ const postForms = (req, res) => {
                 //Нужно добавить редирект на страничку регистрации
             }
             else {
-                const newname = "Мы создали нового пользователя";
-                return res.send(JSON.stringify(newname));
+                if (req.session.authenticated) {
+                    return res.json({ sessions: req.session });
+                    // Если ссесия существует то этот запрос
+                }
+                else {
+                    req.session.authenticated = true;
+                    req.session.user = {
+                        login: req.body.Login,
+                    };
+                    return res.json(req.session);
+                    // Если сессия не существует то этот запрос
+                }
                 // fs.writeFile(
                 //   `${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`,
                 //   JSON.stringify(toursJson),

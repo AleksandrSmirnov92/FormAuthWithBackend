@@ -57,7 +57,6 @@ function createUsers() {
         .then((response) => response.json())
         .then((response) => {
         console.log(response);
-        // console.log(response.status);
         // if (response.status === "success") {
         //   setTimeout(() => {
         //     window.location.href = "http://localhost:3000/forms";
