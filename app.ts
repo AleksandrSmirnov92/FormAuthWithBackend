@@ -1,22 +1,22 @@
 import express from "express";
 
 // const cookieParser = require("cookie-parser");
-// const path = require("path");
+const path = require("path");
 const homePageRouter = require("./routes/homePageRouter");
 const formsRouter = require("./routes/formsRouter");
 const session = require("express-session");
 const app = express();
 app.use(express.json());
 // app.use(cookieParser());
-app.use("/forms", express.static(`${__dirname}`));
-app.use(
-  session({
-    secret: "key that will sign our cookes",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-console.log(__dirname);
+app.use("/forms", express.static(path.join(__dirname, ""))),
+  app.use(
+    session({
+      secret: "key that will sign our cookes",
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
+console.log(path.join(__dirname, ""));
 const port = 3000;
 app.use("/", formsRouter);
 app.use("/", homePageRouter);
