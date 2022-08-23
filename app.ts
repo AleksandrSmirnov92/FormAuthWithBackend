@@ -1,14 +1,14 @@
 import express from "express";
 
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 // const path = require("path");
-const loginRouter = require("./routes/loginRouter");
+const homePageRouter = require("./routes/homePageRouter");
 const formsRouter = require("./routes/formsRouter");
 const session = require("express-session");
 const app = express();
 app.use(express.json());
-app.use(express.static(`${__dirname}`));
-app.use(cookieParser());
+// app.use(cookieParser());
+app.use("/forms", express.static(`${__dirname}`));
 app.use(
   session({
     secret: "key that will sign our cookes",
@@ -16,9 +16,10 @@ app.use(
     saveUninitialized: false,
   })
 );
+console.log(__dirname);
 const port = 3000;
 app.use("/", formsRouter);
-app.use("/", loginRouter);
+app.use("/", homePageRouter);
 app.listen(port, () => {
   console.log(`server listening on port:${port}`);
 });

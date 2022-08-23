@@ -16,6 +16,7 @@ let state = {
   },
   valuesTrue: [false, false, false],
 };
+
 button_Sign_up.addEventListener("click", () => {
   state.classButton = "Sign_up";
   // console.log("Зарегестрироваться", state.classButton);
@@ -54,7 +55,7 @@ Form1_SignUp.addEventListener("submit", (e) => {
 });
 
 function createUsers() {
-  fetch("http://localhost:3000/forms", {
+  fetch("http://localhost:3000", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(state.values),
@@ -62,6 +63,12 @@ function createUsers() {
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
+      if (response.user) {
+        setTimeout(() => {
+          window.location.href = "http://localhost:3000";
+        }, 2000);
+        console.log("Успешно");
+      }
 
       // if (response.status === "success") {
       //   setTimeout(() => {

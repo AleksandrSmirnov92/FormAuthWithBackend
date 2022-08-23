@@ -4,23 +4,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 // const path = require("path");
-const loginRouter = require("./routes/loginRouter");
+const homePageRouter = require("./routes/homePageRouter");
 const formsRouter = require("./routes/formsRouter");
 const session = require("express-session");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use(express_1.default.static(`${__dirname}`));
-app.use(cookieParser());
+// app.use(cookieParser());
+app.use("/forms", express_1.default.static(`${__dirname}`));
 app.use(session({
     secret: "key that will sign our cookes",
     resave: false,
     saveUninitialized: false,
 }));
+console.log(__dirname);
 const port = 3000;
 app.use("/", formsRouter);
-app.use("/", loginRouter);
+app.use("/", homePageRouter);
 app.listen(port, () => {
     console.log(`server listening on port:${port}`);
 });

@@ -49,7 +49,7 @@ Form1_SignUp.addEventListener("submit", (e) => {
     // createUsers();
 });
 function createUsers() {
-    fetch("http://localhost:3000/forms", {
+    fetch("http://localhost:3000", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(state.values),
@@ -57,6 +57,12 @@ function createUsers() {
         .then((response) => response.json())
         .then((response) => {
         console.log(response);
+        if (response.user) {
+            setTimeout(() => {
+                window.location.href = "http://localhost:3000";
+            }, 2000);
+            console.log("Успешно");
+        }
         // if (response.status === "success") {
         //   setTimeout(() => {
         //     window.location.href = "http://localhost:3000/forms";
