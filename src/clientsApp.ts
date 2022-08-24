@@ -55,29 +55,24 @@ Form1_SignUp.addEventListener("submit", (e) => {
 });
 
 function createUsers() {
-  document.cookie = `firstname = ${state.values.Login} `;
-  fetch("http://localhost:3000", {
+  fetch("http://localhost:3000/home", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(state.values),
+    body: JSON.stringify({
+      state: state.values,
+    }),
   })
     .then((response) => response.json())
     .then((response) => {
-      if (response.user) {
+      if (response.status === "success") {
+        console.log(response.status);
         setTimeout(() => {
-          window.location.href = "http://localhost:3000";
+          window.location.href = "http://localhost:3000/home";
         }, 2000);
         console.log("Успешно");
+      } else {
+        console.log("ошибка");
       }
-
-      // if (response.status === "success") {
-      //   setTimeout(() => {
-      //     window.location.href = "http://localhost:3000/forms";
-      //   }, 2000);
-      //   console.log("Успешно");
-      // } else {
-      //   console.log("Ошибка заполнения формы");
-      // }
     });
 }
 function changeSignUpAndSignIn() {

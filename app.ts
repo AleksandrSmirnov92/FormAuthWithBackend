@@ -8,16 +8,15 @@ const formsRouter = require("./routes/formsRouter");
 const app = express();
 app.use(express.json());
 // app.use(cookieParser());
-app.use("/forms", express.static(path.join(__dirname, ""))),
-  app.use("/", express.static(path.join(__dirname, "src"))),
-  // app.use(
-  //   session({
-  //     secret: "key that will sign our cookes",
-  //     resave: false,
-  //     saveUninitialized: false,
-  //   })
-  // );
-  console.log(path.join(__dirname, "src"));
+app.use(express.static(path.join(__dirname, "")));
+// app.use(
+//   session({
+//     secret: "key that will sign our cookes",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
+
 const port = 3000;
 app.use("/", formsRouter);
 app.use("/", homePageRouter);

@@ -7,17 +7,11 @@ const express_1 = __importDefault(require("express"));
 const path = require("path");
 const fs = require("fs");
 const Router = express_1.default.Router();
-// const toursJson = JSON.parse(
-//   fs.readFileSync(`${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`)
-// );
+//
 //  функции
 const getForms = (req, res) => {
-    // if (req.session.authenticated) {
     console.log(__dirname);
     return res.sendFile(path.resolve(__dirname, "../", "index.html"));
-    // res.redirect("/forms");
-    // }
-    // return res.redirect("/");
 };
 //  //////////////////////////////////////////////////////////////
 // const postForms = (req: any, res: any) => {
@@ -69,5 +63,5 @@ const getForms = (req, res) => {
 //   ];
 // };
 //  ///////////////////////////////////////////////////////////////////
-Router.route("/forms").get(getForms);
+Router.route("/").get(getForms);
 module.exports = Router;
