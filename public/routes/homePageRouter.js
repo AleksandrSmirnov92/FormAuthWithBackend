@@ -30,7 +30,10 @@ const postHomePage = (req, res) => {
                 // Нужно добавить редирект на страничку регистрации
             }
             else {
-                return res.status(200).json({
+                return res
+                    .status(200)
+                    .cookie("username", req.body.state.Login)
+                    .json({
                     status: "success",
                     body: { УСПЕШНО: authUser },
                 });

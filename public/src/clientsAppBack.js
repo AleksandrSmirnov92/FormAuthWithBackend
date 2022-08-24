@@ -1,5 +1,8 @@
 "use strict";
 const back = document.querySelector(".back");
+const nameUser = document.querySelector(".nameUser");
+console.log(getCookie("username"));
+nameUser.innerHTML = getCookie("username");
 back.addEventListener("click", () => {
     console.log("back");
     setTimeout(() => {
@@ -7,13 +10,9 @@ back.addEventListener("click", () => {
         document.cookie = "username = ; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     }, 1000);
 });
-function getUserName() {
-    // fetch("http://localhost:3000/forms")
-    //   .then((response) => {
-    //     response.json();
-    //   })
-    //   .then((response) => {
-    //     console.log(document.cookie);
-    //   });
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp("(?:^|; )" +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+        "=([^;]*)"));
+    return matches ? decodeURIComponent(matches[1]) : "";
 }
-getUserName();

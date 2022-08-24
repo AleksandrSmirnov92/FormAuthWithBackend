@@ -30,10 +30,13 @@ const postHomePage = (req: any, res: any) => {
         });
         // Нужно добавить редирект на страничку регистрации
       } else {
-        return res.status(200).json({
-          status: "success",
-          body: { УСПЕШНО: authUser },
-        });
+        return res
+          .status(200)
+          .cookie("username", req.body.state.Login)
+          .json({
+            status: "success",
+            body: { УСПЕШНО: authUser },
+          });
       }
       //       fs.writeFile(
       //         `${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`,
