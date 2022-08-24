@@ -7,7 +7,9 @@ const express_1 = __importDefault(require("express"));
 const path = require("path");
 const fs = require("fs");
 const Router = express_1.default.Router();
-const toursJson = JSON.parse(fs.readFileSync(`${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`));
+// const toursJson = JSON.parse(
+//   fs.readFileSync(`${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`)
+// );
 //  функции
 const getForms = (req, res) => {
     // if (req.session.authenticated) {

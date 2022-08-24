@@ -2,9 +2,9 @@ import express from "express";
 const path = require("path");
 const fs = require("fs");
 const Router = express.Router();
-const toursJson = JSON.parse(
-  fs.readFileSync(`${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`)
-);
+// const toursJson = JSON.parse(
+//   fs.readFileSync(`${path.join(__dirname, "../../dev-data", "/AuthUser.json")}`)
+// );
 
 //  функции
 const getForms = (req: any, res: any) => {

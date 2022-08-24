@@ -4,19 +4,20 @@ import express from "express";
 const path = require("path");
 const homePageRouter = require("./routes/homePageRouter");
 const formsRouter = require("./routes/formsRouter");
-const session = require("express-session");
+// const session = require("express-session");
 const app = express();
 app.use(express.json());
 // app.use(cookieParser());
 app.use("/forms", express.static(path.join(__dirname, ""))),
-  app.use(
-    session({
-      secret: "key that will sign our cookes",
-      resave: false,
-      saveUninitialized: false,
-    })
-  );
-console.log(path.join(__dirname, ""));
+  app.use("/", express.static(path.join(__dirname, "src"))),
+  // app.use(
+  //   session({
+  //     secret: "key that will sign our cookes",
+  //     resave: false,
+  //     saveUninitialized: false,
+  //   })
+  // );
+  console.log(path.join(__dirname, "src"));
 const port = 3000;
 app.use("/", formsRouter);
 app.use("/", homePageRouter);

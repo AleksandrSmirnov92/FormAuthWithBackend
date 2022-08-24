@@ -49,6 +49,7 @@ Form1_SignUp.addEventListener("submit", (e) => {
     // createUsers();
 });
 function createUsers() {
+    document.cookie = `firstname = ${state.values.Login} `;
     fetch("http://localhost:3000", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -56,7 +57,6 @@ function createUsers() {
     })
         .then((response) => response.json())
         .then((response) => {
-        console.log(response);
         if (response.user) {
             setTimeout(() => {
                 window.location.href = "http://localhost:3000";

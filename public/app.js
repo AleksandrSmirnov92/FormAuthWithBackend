@@ -8,17 +8,20 @@ const express_1 = __importDefault(require("express"));
 const path = require("path");
 const homePageRouter = require("./routes/homePageRouter");
 const formsRouter = require("./routes/formsRouter");
-const session = require("express-session");
+// const session = require("express-session");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // app.use(cookieParser());
 app.use("/forms", express_1.default.static(path.join(__dirname, ""))),
-    app.use(session({
-        secret: "key that will sign our cookes",
-        resave: false,
-        saveUninitialized: false,
-    }));
-console.log(path.join(__dirname, ""));
+    app.use("/", express_1.default.static(path.join(__dirname, "src"))),
+    // app.use(
+    //   session({
+    //     secret: "key that will sign our cookes",
+    //     resave: false,
+    //     saveUninitialized: false,
+    //   })
+    // );
+    console.log(path.join(__dirname, "src"));
 const port = 3000;
 app.use("/", formsRouter);
 app.use("/", homePageRouter);
